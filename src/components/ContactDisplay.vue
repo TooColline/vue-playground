@@ -14,10 +14,10 @@
             w-[50px]
             border border-blue-500
             rounded-full
-            mr-5
+            mr-3
           "
         >
-          <h1>{{ initials(contact) }}</h1>
+          <h1 class="font-bold">{{ initials(contact) }}</h1>
         </div>
         <div class="flex flex-col">
           <h1 class="font-bold">{{ name(contact) }}</h1>

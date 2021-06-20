@@ -1,9 +1,9 @@
 <template>
-  <HelloWorld msg="Hello Collins" />
+  <ContactDisplay msg="Hello Collins" />
 </template>
 
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import ContactDisplay from './components/ContactDisplay.vue'
 
 </script>
 

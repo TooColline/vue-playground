@@ -1,23 +1,28 @@
 <template>
   <div class="flex justify-center">
-    <div class="flex bg-white rounded-[10px] px-[15px] py-[10px]">
+    <div class="flex flex-col space-y-[20px]">
       <div
-        class="
-          flex
-          items-center
-          justify-center
-          h-[50px]
-          w-[50px]
-          border border-blue-500
-          rounded-full
-          mr-5
-        "
+        class="flex bg-white rounded-[10px] px-[15px] py-[10px]"
+        v-for="contact in allContacts"
       >
-        <h1>{{ initials }}</h1>
-      </div>
-      <div class="flex flex-col">
-        <h1 class="font-bold">{{ name }}</h1>
-        <h3 class="text-gray-600">{{ myEmail }}</h3>
+        <div
+          class="
+            flex
+            items-center
+            justify-center
+            h-[50px]
+            w-[50px]
+            border border-blue-500
+            rounded-full
+            mr-5
+          "
+        >
+          <h1>{{ initials(contact) }}</h1>
+        </div>
+        <div class="flex flex-col">
+          <h1 class="font-bold">{{ name(contact) }}</h1>
+          <h3 class="text-gray-600">{{ contact.email }}</h3>
+        </div>
       </div>
     </div>
   </div>
@@ -26,17 +31,30 @@
 <script setup>
 import { ref, computed } from "vue";
 
-const firstName = ref("Collins");
-const lastName = ref("Too");
-const myEmail = ref("collinstoo.ct@gmail.com");
+const allContacts = [
+  {
+    firstName: "Collins",
+    lastName: "Too",
+    email: "collinstoo.ct@gmail.com",
+  },
+  {
+    firstName: "Albert",
+    lastName: "Keen",
+    email: "albert@gmail.com",
+  },
+];
 
 const name = computed(() => {
-  return firstName.value + " " + lastName.value;
+  return (name) => {
+    return name.firstName + " " + name.lastName;
+  };
 });
 
 const initials = computed(() => {
-  if (!firstName.value || !lastName.value) return "";
-  return firstName.value[0] + lastName.value[0];
+  return (initials) => {
+    if (!initials.firstName || !initials.lastName) return "";
+    return initials.firstName[0] + initials.lastName[0];
+  };
 });
 </script>
 

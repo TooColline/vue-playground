@@ -18,8 +18,14 @@
           "
         >
           <h1 class="font-bold">{{ initials(contact) }}</h1>
+          <!--          <slot>CT</slot>-->
+          <!--          <slot>FB</slot>-->
+          <!--          <slot name="initials" :myInitials="myInitials"></slot>-->
+          <!--          <slot name="image"></slot>-->
+          <!--          <h1 v-if="shouldShowImage">IMG</h1>-->
         </div>
         <div class="flex flex-col">
+          <!--          <h1 class="font-bold">{{ name(contact) }}</h1>-->
           <h1 class="font-bold">{{ name(contact) }}</h1>
           <h3 class="text-gray-600">{{ contact.email }}</h3>
         </div>
@@ -29,7 +35,17 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { computed, defineProps, ref } from "vue";
+
+const props = defineProps({
+  shouldShowImage: Boolean,
+});
+
+// const shouldShowImage = () => {
+//   return props.shouldShowImage;
+// };
+
+const myInitials = ref("INT");
 
 const allContacts = [
   {
